@@ -5,7 +5,7 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var indexrouter = require('./routes');
-
+var db = require('./config/db');
 
 var app = express();
 
@@ -16,6 +16,6 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/api',indexrouter);
-
+db.connect();
 
 module.exports = app;

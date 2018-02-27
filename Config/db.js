@@ -4,7 +4,7 @@ var connection = mysql.createConnection({
   user     : 'Robert',
   database : 'quiz'
 });
-function query(input,callback)
+function connect()
 {
   connection.connect(function(err) {
     if (err) {
@@ -12,11 +12,21 @@ function query(input,callback)
     }
     console.log('connected as id ' + connection.threadId);
   });
-  connection.query('SELECT * from user', function (error, results) {
+}
+function query(input,callback)
+{
+  connection.query(input, function (error, results) {
     if (error) throw error;
     callback(results);
   });
-  connection.end();
-
+}
+function insert(input,values,callback)
+{
+  connection.query(input, values, function (error, results) {
+    if (error) throw error;
+    callback(results);
+  });
 }
 module.exports.query = query;
+module.exports.connect = connect;
+module.exports.insert = insert;
