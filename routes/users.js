@@ -155,7 +155,12 @@ router.post('/demote', function(req, res)
     {
       res.send('ERROR');
     }else {
-      res.send(userid + ' demoted');
+      function results(results)
+      {
+        res.send("Successfull!");
+      }
+      var query = 'UPDATE User SET Role = "User" WHERE UserID =' + userid;
+      db.query(query,results);
     }
 });
 
