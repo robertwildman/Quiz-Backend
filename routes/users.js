@@ -164,6 +164,29 @@ router.post('/demote', function(req, res)
     }
 });
 
+//User Logining in
+router.post('/login', function(req, res)
+{
+    var username = req.body.user.username;
+    var password = req.body.user.password;
+    if(username == null || password == null)
+    {
+      res.send('ERROR');
+    }else {
+      function results(results)
+      {
+        res.send(results);
+      }
+      var query = 'Select Username ,Password from user WHERE Username = ' + connection.escape(username);
+      db.query(query,results);
+    }
+});
+
+//User Logging out
+router.post('/logout', function(req, res)
+{
+      res.send('Logged Out');
+});
 
 
 module.exports = router;
