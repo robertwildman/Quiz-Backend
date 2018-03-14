@@ -30,3 +30,4 @@ function insert(input,values,callback)
 module.exports.query = query;
 module.exports.connect = connect;
 module.exports.insert = insert;
+module.exports.connection = connection;

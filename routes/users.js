@@ -1,12 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var db = require('../config/db');
-var mysql      = require('mysql');
-var connection = mysql.createConnection({
-  host     : 'localhost',
-  user     : 'Robert',
-  database : 'quiz'
-});
+var connection = db.connection;
 
 //Return all users
 router.get('/', function(req, res) {
