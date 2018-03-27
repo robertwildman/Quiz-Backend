@@ -16,6 +16,9 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/api',indexrouter);
+app.get('/', function(req, res) {
+    res.sendFile(path.join(__dirname + '/Views/login.html'));
+});
 db.connect();
 
 module.exports = app;

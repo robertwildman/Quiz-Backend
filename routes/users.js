@@ -162,17 +162,36 @@ router.post('/demote', function(req, res)
 //User Logining in
 router.post('/login', function(req, res)
 {
+  console.log(req.body);
     var username = req.body.user.username;
     var password = req.body.user.password;
     if(username == null || password == null)
     {
-      res.send('ERROR');
+      res.send("failed");
     }else {
       function results(results)
       {
-        res.send(results);
+        console.log(results);
+        console.log(results[0]);
+        console.log(results[0].UserID);
+        if(results.length == 0)
+        {
+          res.send("failed");
+        }else {
+          if(results[0].Password == password)
+          {
+            var m = '{"UserID": '  + results[0].UserID + '}';
+            //res.send(m);
+            var path = require('path');
+
+            res.sendFile(path.resolve(__dirname+'../../Views/homeboards.html'));
+          }else {
+            res.send("failed");
+          }
+        }
+
       }
-      var query = 'Select Username ,Password from user WHERE Username = ' + connection.escape(username);
+      var query = 'Select Username ,Password,UserID from user WHERE Username = ' + connection.escape(username);
       db.query(query,results);
     }
 });

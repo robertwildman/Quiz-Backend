@@ -1,0 +1,42 @@
+
+.loginlogo {
+    width:100%;
+    position:fixed;
+    top:0px;
+	padding-left:750px;
+}
+.loginform {
+	width:950px;
+	position:fixed;
+	padding-top:300px;
+	padding-left:800px;
+	font-size: 20px;
+}
+
+.loginbutton {
+	width:950px;
+	position:fixed;
+	padding-top:50px;
+	padding-left:100px;
+	font-size: 15px;
+}
+
+.createaccountlink {
+	width:950px;
+	position:fixed;
+	padding-top:500px;
+	padding-left:875px;
+	font-size: 15px;
+}
+
+body {
+    font-family: "Trebuchet MS", Helvetica, sans-serif;
+}
+
+th, td {
+    padding-right: 8px;
+	padding:8px;
+	
+}
+
+
