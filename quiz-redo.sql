@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 27, 2018 at 03:22 PM
+-- Generation Time: Apr 03, 2018 at 01:31 PM
 -- Server version: 10.1.31-MariaDB
 -- PHP Version: 7.2.3
 
@@ -38,50 +38,23 @@ CREATE TABLE `category` (
 --
 
 INSERT INTO `category` (`CategoryID`, `Name`) VALUES
-(167, 'Entertainment: Musicals & Theatres'),
-(168, 'General Knowledge'),
-(169, 'History'),
-(170, 'History'),
-(171, 'Entertainment: Video Games'),
-(172, 'Geography'),
-(173, 'Science: Computers'),
-(174, 'Geography'),
-(175, 'Entertainment: Video Games'),
-(176, 'History'),
-(177, 'Entertainment: Music'),
-(178, 'Entertainment: Video Games'),
-(179, 'Entertainment: Japanese Anime & Manga'),
-(180, 'Geography'),
-(181, 'Entertainment: Video Games'),
-(182, 'Geography'),
-(183, 'Entertainment: Video Games'),
-(184, 'History'),
-(185, 'Entertainment: Music'),
-(186, 'Vehicles'),
-(187, 'Entertainment: Film'),
-(188, 'Science & Nature'),
-(189, 'Science: Gadgets'),
-(190, 'Geography'),
-(191, 'Entertainment: Comics'),
-(192, 'Entertainment: Film'),
-(193, 'Entertainment: Music'),
-(194, 'Entertainment: Video Games'),
-(195, 'Sports'),
-(196, 'Entertainment: Video Games'),
-(197, 'Entertainment: Television'),
-(198, 'Vehicles'),
-(199, 'Sports'),
-(200, 'Entertainment: Japanese Anime & Manga'),
-(201, 'Geography'),
-(202, 'Entertainment: Cartoon & Animations'),
-(203, 'Entertainment: Video Games'),
-(204, 'History'),
-(205, 'Science & Nature'),
-(206, 'Entertainment: Video Games'),
-(207, 'Entertainment: Television'),
-(208, 'Entertainment: Film'),
-(209, 'Science: Computers'),
-(210, 'Celebrities');
+(308, 'Entertainment: Musicals & Theatres'),
+(309, 'General Knowledge'),
+(310, 'History'),
+(311, 'Entertainment: Video Games'),
+(312, 'Geography'),
+(313, 'Science: Computers'),
+(314, 'Entertainment: Music'),
+(315, 'Entertainment: Japanese Anime & Manga'),
+(316, 'Vehicles'),
+(317, 'Entertainment: Film'),
+(318, 'Science & Nature'),
+(319, 'Science: Gadgets'),
+(320, 'Entertainment: Comics'),
+(321, 'Sports'),
+(322, 'Entertainment: Television'),
+(323, 'Entertainment: Cartoon & Animations'),
+(324, 'Celebrities');
 
 -- --------------------------------------------------------
 
@@ -250,19 +223,19 @@ ALTER TABLE `userquestionanswer`
 -- AUTO_INCREMENT for table `category`
 --
 ALTER TABLE `category`
-  MODIFY `CategoryID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=211;
+  MODIFY `CategoryID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=325;
 
 --
 -- AUTO_INCREMENT for table `question`
 --
 ALTER TABLE `question`
-  MODIFY `QuestionID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `QuestionID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `questionanswer`
 --
 ALTER TABLE `questionanswer`
-  MODIFY `AnswerID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `AnswerID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `user`
