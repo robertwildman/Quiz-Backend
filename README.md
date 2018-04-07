@@ -1,14 +1,14 @@
 # Quiz-Backend
 
 
-Install Node.Js 
-Run npm install
-Run Nodemon 
+Install Node.Js <br />
+Run npm install <br />
+Run Nodemon <br />
 
 
-Install XAMPP 
-Load the SQL File into the server 
-Change db.js in the config file 
+Install XAMPP <br />
+Load the SQL File into the server <br />
+Change db.js in the config file <br />
 
 
 
