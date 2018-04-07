@@ -8,7 +8,7 @@ Run Nodemon <br />
 
 Install XAMPP <br />
 Load the SQL File into the server <br />
-Change db.js in the config file <br />
+Change db.js in the config file to correct config <br />
 
 
 
