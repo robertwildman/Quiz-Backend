@@ -12,19 +12,21 @@
 </div>
 
 <div class="loginform">
-<table>
-    <tr><td>Username:</td> <td> <input type="text" id="newuser" size="20"></td> </tr>
-	<tr><td>Email Address:</td> <td> <input type="text" id="newmail" size="20"></td> </tr>
-	<tr><td>Password:</td> <td> <input type="text" id="newpass" size="20"></td> </tr>
-	<tr><td>Confirm Password:</td> <td> <input type="text" id="newconfpass" size="20"></td>  </tr>	
-</table>
-
-<div class = "loginbutton">
-<button onclick="location.href = 'login.html';" id="createaccountbutton" class="float-left submit-button">Create Account</button>
-<br/>
-<br/>
-<a href="login.html">Back To Login</a>
-</div>
+  <form action="/api/users/new" method="post">
+  <table>
+  <tr><td>First Name:</td> <td> <input type="text" id="firstname" size="20"></td> </tr>
+  <tr><td>Last Name:</td> <td> <input type="text" id="lastname" size="20"></td> </tr>
+    <tr><td>Username:</td> <td> <input type="text" id="username" size="20"></td> </tr>
+  	<tr><td>Email Address:</td> <td> <input type="text" id="email" size="20"></td> </tr>
+  	<tr><td>Password:</td> <td> <input type="text" id="password" size="20"></td> </tr>
+  </table>
+  <div class = "loginbutton">
+  <input type="submit">Create Account</input>
+  <br/>
+  </form>
+  <br/>
+  <a href="login.html">Back To Login</a>
+  </div>
 </div>
 
 

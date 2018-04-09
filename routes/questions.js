@@ -15,8 +15,9 @@ router.get('/:id/answers', function(req, res) {
 });
 router.post('/import', function(req, res)
 {
+  //Sorts the Json File out and sends it out to the user!
   var body = req.body.results;
-res.send("body");
+  res.send("body");
   async.eachSeries(body,function(item, cb){
     setTimeout(function() {
     CategoryCheck(item,function()
@@ -30,30 +31,6 @@ res.send("body");
   }, function(err){
     console.log('#1 Final call ', err);
   });
-
-
-
-
-/**  async.mapSeries(body, (value, callback) => {
-    console.log(value);
-    console.log("1");
-    CategoryCheck(value,function()
-  {
-    console.log("12");
-  });
-
-   async.waterfall([
-      async.apply(CategoryCheck, value),
-       addtodb
-   ], function (error, success) {
-       if (error) { console.log('Something is wrong!'); }
-       return callback;
-   });
-
-}, function(err, results) {
-
-});
-**/
 });
 
 
@@ -64,8 +41,37 @@ function addtodb(body,callback)
   console.log(body.category);
     function callback1(CategoryID)
     {
-      console.log("4");
-      console.log(CategoryID);
+      var query = 'INSERT INTO question (`QuestionID`, `CategoryID`, `Question`) VALUES (null,' + connection.escape(CategoryID) + ',' + connection.escape(body.question) + ');';
+      db.query(query,function()
+      {
+        function results(results)
+        {
+          console.log(results[0]);
+          //Send off the Correct Answer
+          var query = 'INSERT INTO questionanswer (`AnswerID`, `QuestionID`, `Answer`,`CORRECT_ANSWER`) VALUES (null,' + connection.escape(results[0].QuestionID) + ',' + connection.escape(body.correct_answer) + ',1);';
+          db.query(query,function(){});
+          //Send off the incorrect Answers
+          for(var i = 0; i < 3; i++)
+          {
+            var query = 'INSERT INTO questionanswer (`AnswerID`, `QuestionID`, `Answer`,`CORRECT_ANSWER`) VALUES (null,' + connection.escape(results[0].QuestionID) + ',' + connection.escape(body.incorrect_answers[i]) + ',0);';
+            db.query(query,function(){});
+          }
+          console.log(body.incorrect_answers);
+        }
+        var query = 'SELECT QuestionID from question where Question = ' + connection.escape(body.question);
+        db.query(query,results);
+
+
+
+
+
+
+
+
+
+
+
+      });
       callback();
     }
     getCategoryID(body.category,callback1);
