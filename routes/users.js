@@ -179,18 +179,16 @@ router.post('/login', function(req, res)
         }else {
           if(results[0].Password == password)
           {
-            var m = '{"UserID": '  + results[0].UserID + '}';
-            //res.send(m);
-            var path = require('path');
+          var path = require('path');
 
-            res.render('homeboards');
+            res.render('homeboards',{user:results[0]});
           }else {
             res.render('login',{error:"Username or Password not found!"});
           }
         }
 
       }
-      var query = 'Select Username ,Password,UserID from user WHERE Username = ' + connection.escape(username);
+      var query = 'Select * from user WHERE Username = ' + connection.escape(username);
       db.query(query,results);
     }
 });
