@@ -13,14 +13,13 @@
 	float: left;
 	z-index: 2;
 }
-.profileinfo {
+.profileinfo { 
 	position:relative;
 	font-size: 23px;	
 	margin-left: 700px;
 	margin-top: 50px;
 	float:left;
 }
-
 .profileinfo a {
     display: block;
     color: white;
