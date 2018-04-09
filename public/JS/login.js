@@ -20,17 +20,7 @@ $(document).ready(function(){
             contentType: "application/json; charset=utf-8",
             data: message
           }).done(function(response) {
-            console.log("success");
-            console.log(response);
-            if(response == "failed")
-            {
-              alert("Username or Password incorrect!");
-            }
-            else {
-              $('#output').html(response);
-              // var UserID = JSON.parse(response).UserID;
-             // alert(UserID);
-            }
+            $("body").html(response);
           }).fail(function() {
               console.log("error");
           });

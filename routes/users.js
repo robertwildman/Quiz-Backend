@@ -167,16 +167,15 @@ router.post('/login', function(req, res)
     var password = req.body.user.password;
     if(username == null || password == null)
     {
-      res.send("failed");
+      res.render('login',{error:"Username or Password not entered!"});
     }else {
       function results(results)
       {
         console.log(results);
         console.log(results[0]);
-        console.log(results[0].UserID);
         if(results.length == 0)
         {
-          res.send("failed");
+          res.render('login',{error:"Username or Password not found!"});
         }else {
           if(results[0].Password == password)
           {
@@ -184,9 +183,9 @@ router.post('/login', function(req, res)
             //res.send(m);
             var path = require('path');
 
-            res.sendFile(path.resolve(__dirname+'../../Views/homeboards.html'));
+            res.render('homeboards');
           }else {
-            res.send("failed");
+            res.render('login',{error:"Username or Password not found!"});
           }
         }
 

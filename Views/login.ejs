@@ -14,10 +14,13 @@
 </div>
 
 <div class = "createaccountlink">
-<a href="createaccount.html">Create Account</a>
+<a href="createaccount">Create Account</a>
 </div>
 
 <div class = "loginform">
+  <% if(error) { %>
+<h1><%= error %> </h1>
+<% } %>
 	<table>
     <tr><td>Username:</td> <td> <input type="text" id="user" size="20"></td> </tr>
 	<tr><td>Password:</td> <td> <input type="text" id="pass" size="20"></td> </tr>
