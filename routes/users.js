@@ -87,20 +87,16 @@ router.post('/new', function(req, res)
     console.log(req.body);
     if(username == null || firstName == null || lastName == null || email == null || password == null)
     {
-      res.send('ERROR MISSING INFOMATION');
+      res.render('createaccount',{error:"ERROR MISSING INFOMATION!"});
     }else {
       function results(results)
       {
-        res.send("Successfull!");
+        res.render('login');
       }
-      function result(id)
-      {
         var newid = id.length + 1;
-        var query = 'INSERT INTO User (`UserID`, `Firstname`, `Lastname`, `Email`, `Username`, `Password`, `Role`) VALUES (' + connection.escape(newid) + ',' + connection.escape(firstName) + ',' + connection.escape(lastName) + ',' + connection.escape(email) + ',' + connection.escape(username) + ',' + connection.escape(password) + ',"User");';
+        var query = 'INSERT INTO User (`UserID`, `Firstname`, `Lastname`, `Email`, `Username`, `Password`, `Role`) VALUES (' + connection.escape(newid) + ',' + connection.escape(firstName) + ',' + connection.escape(lastName) + ',' + connection.escape(email) + ',' + connection.escape(username) + ',' + connection.escape(password) + ',1);';
         db.query(query,results);
-      }
-      var query = 'SELECT UserID FROM user';
-      db.query(query,result);
+
     }
 });
 //This will be used when editing a new user.

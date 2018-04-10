@@ -10,15 +10,17 @@
 <div class="loginlogo">
 <img src="./images/quizlogo.png" alt="Caley Quizzes">
 </div>
-
+<% if(locals.error) { %>
+<h1><%= locals.error %> </h1>
+<% } %>
 <div class="loginform">
   <form action="/api/users/new" method="post">
   <table>
-  <tr><td>First Name:</td> <td> <input type="text" id="firstname" size="20"></td> </tr>
-  <tr><td>Last Name:</td> <td> <input type="text" id="lastname" size="20"></td> </tr>
-    <tr><td>Username:</td> <td> <input type="text" id="username" size="20"></td> </tr>
-  	<tr><td>Email Address:</td> <td> <input type="text" id="email" size="20"></td> </tr>
-  	<tr><td>Password:</td> <td> <input type="text" id="password" size="20"></td> </tr>
+  <tr><td>First Name:</td> <td> <input type="text" name="firstname" size="20"></td> </tr>
+  <tr><td>Last Name:</td> <td> <input type="text" name="lastname" size="20"></td> </tr>
+    <tr><td>Username:</td> <td> <input type="text" name="username" size="20"></td> </tr>
+  	<tr><td>Email Address:</td> <td> <input type="text" name="email" size="20"></td> </tr>
+  	<tr><td>Password:</td> <td> <input type="text" name="password" size="20"></td> </tr>
   </table>
   <div class = "loginbutton">
   <input type="submit">Create Account</input>

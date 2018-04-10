@@ -18,8 +18,8 @@
 </div>
 
 <div class = "loginform">
-  <% if(error) { %>
-<h1><%= error %> </h1>
+  <% if(locals.error) { %>
+<h1><%= locals.error %> </h1>
 <% } %>
 	<table>
     <tr><td>Username:</td> <td> <input type="text" id="user" size="20"></td> </tr>
