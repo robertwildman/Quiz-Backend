@@ -18,6 +18,15 @@ router.get('/admin', function(req, res) {
   db.query('SELECT * from user',results);
 
 });
+router.get('/addquiz', function(req, res) {
+  function results(results)
+  {
+    res.render('addquiz',{categories:results});
+  }
+  //First bit is the query and the second is the callback needed to recive the results
+  db.query('SELECT * from category',results);
+
+});
 router.get('/edituser', function(req, res) {
     res.render('edituser');
 });
