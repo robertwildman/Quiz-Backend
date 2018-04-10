@@ -4,14 +4,14 @@
 <head>
   <meta charset="utf-8">
   <title> Caley Quizzes</title>
-  <link rel="stylesheet" href="../public/CSS/quizselectstyle.css">
+  <link rel="stylesheet" href="../CSS/quizselectstyle.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
 <body>
 
 <div class = "homelogo">
-<img src="../public/images/quizlogo.png" alt="Caley Quizzes">
-</div> 
+<img src="../images/quizlogo.png" alt="Caley Quizzes">
+</div>
 
 <div class = "profilelink">
 <ul>
@@ -33,7 +33,10 @@
 <h2> User Commands </h2>
 
 <table>
-    <tr><td>Enter User ID:</td> <td> <input type="text" id="searchuserid" size="20"></td> </tr>
+  <tr><th>Firstname</th><th>Lastname</th><th>Email</th><th>Username</th></tr>
+  <% users.forEach(function(user) { %>
+        <tr><td><%= user.Firstname %></td><td><%= user.Lastname %></td><td><%= user.Email %></td><td><%= user.Username %></td> </tr>
+    <% }); %>
 </table>
 
 
