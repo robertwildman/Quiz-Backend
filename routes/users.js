@@ -91,10 +91,9 @@ router.post('/new', function(req, res)
     }else {
       function results(results)
       {
-        res.render('login');
+        res.redirect('/');
       }
-        var newid = id.length + 1;
-        var query = 'INSERT INTO User (`UserID`, `Firstname`, `Lastname`, `Email`, `Username`, `Password`, `Role`) VALUES (' + connection.escape(newid) + ',' + connection.escape(firstName) + ',' + connection.escape(lastName) + ',' + connection.escape(email) + ',' + connection.escape(username) + ',' + connection.escape(password) + ',1);';
+        var query = 'INSERT INTO User (`UserID`, `Firstname`, `Lastname`, `Email`, `Username`, `Password`, `RoleID`) VALUES (null,' + connection.escape(firstName) + ',' + connection.escape(lastName) + ',' + connection.escape(email) + ',' + connection.escape(username) + ',' + connection.escape(password) + ',1);';
         db.query(query,results);
 
     }
@@ -179,8 +178,8 @@ router.post('/login', function(req, res)
         }else {
           if(results[0].Password == password)
           {
+            req.session.user = results[0];
           var path = require('path');
-
             res.render('homeboards',{user:results[0]});
           }else {
             res.render('login',{error:"Username or Password not found!"});
