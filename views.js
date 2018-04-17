@@ -13,6 +13,16 @@ router.get('/', function(req, res) {
   }
 
 });
+router.get('/homeboards', function(req, res) {
+  if (req.session && req.session.user) {
+
+      res.render('homeboards',{user:req.session.user});
+  }else
+  {
+      res.render('login',{error:null});
+  }
+
+});
 router.get('/createaccount', function(req, res) {
     res.render('createaccount');
 });

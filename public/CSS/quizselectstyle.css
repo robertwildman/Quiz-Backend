@@ -98,7 +98,15 @@
     color: white;
     background-color: #0080ff;
 }
-
+.topgroup
+{
+	margin: 40px;
+}
+.btn-nav
+{
+	margin-left: 15px;
+	margin-right: 15px;
+}
 .homenav li a {
     display: block;
     color: #000;

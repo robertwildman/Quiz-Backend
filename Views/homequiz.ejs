@@ -1,9 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8">
-  <title> Caley Quizzes</title>
-  <link rel="stylesheet" href="../CSS/quizselectstyle.css">
+<% include ./partials/head %>
 </head>
 <body>
 
@@ -22,18 +20,19 @@
 
 <ul>
   <li><a class="active">Quizzes</a></li>
-  <li><a href="homeboards.html">Leaderboard</a></li>
+  <li><a href="homeboards">Leaderboard</a></li>
+  <li><a href="admin">Admin</a></li>
 </ul>
 
 </div>
 
 <div class="quizselect">
-<table class = "quizselecttable">
+<table class = "quizselecttable table table-dark">
 <% if (quizes.length == 0){%>
     <p> No Quizes Found Please Add one!!</p>
 <% } %>
   <% quizes.forEach(function(quizes) { %>
-    <tr> <td> <a href="/quiz/<%= quizes.QuizID %>/1"> <img src="./images/placeholder.png" alt="PLACEHOLDER"></a> </td> </tr>
+    <tr> <td> <a href="/quiz/<%= quizes.QuizID %>"> <img src="./images/placeholder.png" alt="PLACEHOLDER"></a> </td> </tr>
     <tr><td><%= quizes.QuizName %></tr>
     <% }); %>
 </table>
