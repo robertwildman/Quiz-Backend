@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+<% include ../partials/head %>
+</head>
+<body>
+<script>
+  function submit(v,i,qid)
+  {
+    var counter = 0;
+    $("input:checked").each(function() {
+      console.log(this.name);
+      if (this.value == 1) {
+          counter++;
+    }
+    });
+    console.log(counter);
+    $(v).hide();
+    $.post("/api/quiz/"+qid+"/score",
+    {
+        score: counter,
+    },
+    function(data, status){
+        alert("Data: " + data + "\nStatus: " + status);
+    });
+    $('#score').text("You score " + counter + "/ " + i+" on this quiz!!");
+  }
+</script>
+<div class = "homelogo">
+<img src="../images/quizlogo.png" alt="Caley Quizzes">
+</div>
+
+<div class = "profilelink">
+<ul>
+<li><a href ="profile">Profile</a></li>
+<li><a href="login">Log Out</a></li>
+</ul>
+</div>
+
+<div class = "homenav">
+
+<ul>
+  <li><a href="../homequiz">Back</a></li>
+</ul>
+
+</div>
+
+<div class = "questioncontent">
+<div class = "quiztitle">
+<h1> <%= quiztitle %></h1>
+</div>
+<br/>
+
+<div class = "quizquestion">
+    <h1 id="score"></h1>
+    <% quiz.forEach(function(question, i) { %>
+      <div id="question<%= i %>">
+      <% if ( i > 0) { %>
+        <script>
+        $('#question<%= i%>').hide()
+       </script>
+     <% }%>
+        <form>
+        <h3><%= question.Question %></h3>
+        <div class="btn-group" data-toggle="buttons">
+          <ul class="list-unstyled">
+        <% question.Answers.forEach(function(Answer, i) { %>
+          <li>
+          <div>
+            <label class="btn btn-primary">
+              <input type="radio" name="options" id="question-<%= question.QuestionID %>-answers-<%= Answer.AnswerID %>" value="<%= Answer.state %>" />
+              <%= Answer.answer %></label>
+          </div>
+        </li>
+        <% }); %>
+      </ul>
+        </div>
+      </form>
+      <% if ( i > 0) { %>
+      <div name="backwards" class="btn btn-primary" onclick="$('#question<%= i-1 %>').show();$('#question<%= i %>').hide();">Backwards</div>
+      <% }; %>
+      <% if ( i < quiz.length - 1 ) { %>
+      <div name="forwards" class="btn btn-primary" onclick="$('#question<%= i+1 %>').show();$('#question<%= i %>').hide();">Forwards</div>
+      <% } else { %>
+      <div name="submit" class="btn btn-primary" onclick="submit('#question<%= i %>',<%= quiz.length %>,<%= quizid %>)">Submit</div>
+      <% }; %>
+    </div>
+    <% }); %>
+
+</div>
+
+
+</body>
+</html>

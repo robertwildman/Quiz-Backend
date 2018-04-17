@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<% include ./partials/head %>
+</head>
+<body>
+
+<div class = "homelogo">
+<img src="../images/quizlogo.png" alt="Caley Quizzes">
+</div>
+
+<div class = "profilelink">
+<ul>
+<li><a href="profile.html">Profile</a></li>
+<li><a href="login.html">Log Out</a></li>
+</ul>
+</div>
+
+<div class = "homenav">
+
+<ul>
+  <li><a class="active">Quizzes</a></li>
+  <li><a href="homeboards">Leaderboard</a></li>
+  <li><a href="admin">Admin</a></li>
+</ul>
+
+</div>
+
+<div class="quizselect">
+<table class = "quizselecttable table table-dark">
+<% if (quizes.length == 0){%>
+    <p> No Quizes Found Please Add one!!</p>
+<% } %>
+  <% quizes.forEach(function(quizes) { %>
+    <tr> <td> <a href="/quiz/<%= quizes.QuizID %>"> <img src="./images/placeholder.png" alt="PLACEHOLDER"></a> </td> </tr>
+    <tr><td><%= quizes.QuizName %></tr>
+    <% }); %>
+</table>
+</div>
+
+</body>
+</html>

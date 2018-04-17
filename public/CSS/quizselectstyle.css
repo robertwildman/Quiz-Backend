@@ -1,4 +1,3 @@
-
 .homelogo{
 	width:100%;
 	position:relative;
@@ -13,9 +12,9 @@
 	float: left;
 	z-index: 2;
 }
-.profileinfo { 
+.profileinfo {
 	position:relative;
-	font-size: 23px;	
+	font-size: 23px;
 	margin-left: 700px;
 	margin-top: 50px;
 	float:left;
@@ -62,7 +61,7 @@
 }
 
 .profilelink a.active {
-	color:#0080ff; 
+	color:#0080ff;
 }
 
 .profilelink a:hover:not(.active) {
@@ -74,14 +73,14 @@
     list-style-type: none;
     margin: 0;
     padding: 0;
-    overflow: hidden;	
+    overflow: hidden;
 }
 
 .profilelink li {
     float: left;
 }
 
-	
+
 .homenav ul {
     list-style-type: none;
     margin: 0;
@@ -99,7 +98,15 @@
     color: white;
     background-color: #0080ff;
 }
-
+.topgroup
+{
+	margin: 40px;
+}
+.btn-nav
+{
+	margin-left: 15px;
+	margin-right: 15px;
+}
 .homenav li a {
     display: block;
     color: #000;
@@ -133,4 +140,9 @@ th, td {
 
 .leaderboard{
 	margin-left: 750px;
+}
+
+.quizquestion
+{
+	margin-left: 60px;
 }
