@@ -8,6 +8,9 @@ var connection = db.connection;
 router.get('/', function(req, res, next) {
     res.send('Welcome to Leaderboard API');
 });
+router.get('/getanswers/:id', function(req, res, next) {
+    res.send('Welcome to Leaderboard API');
+});
 
 
 module.exports = router;

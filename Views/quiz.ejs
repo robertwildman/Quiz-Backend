@@ -3,13 +3,39 @@
 <head>
   <meta charset="utf-8">
   <title> Caley Quizzes</title>
-  <link rel="stylesheet" href="quizselectstyle.css">
+  <link rel="stylesheet" type="text/css" href="../CSS/quizselectstyle.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
 </head>
 <body>
-
+<script>
+  function submit(v,i,qid)
+  {
+    var counter = 0;
+    $("input:checked").each(function() {
+      console.log(this.name);
+      if (this.value == 1) {
+          counter++;
+    }
+    });
+    console.log(counter);
+    $(v).hide();
+    $.post("/api/quiz/"+qid+"/score",
+    {
+        score: counter,
+    },
+    function(data, status){
+        alert("Data: " + data + "\nStatus: " + status);
+    });
+    $('#score').text("You score " + counter + "/ " + i+" on this quiz!!");
+  }
+</script>
 <div class = "homelogo">
-<img src="./images/quizlogo.png" alt="Caley Quizzes">
-</div> 
+<img src="../images/quizlogo.png" alt="Caley Quizzes">
+</div>
 
 <div class = "profilelink">
 <ul>
@@ -27,23 +53,49 @@
 </div>
 
 <div class = "questioncontent">
-
 <div class = "quiztitle">
-<h1> {Quiz Title} </h1>
+<h1> <%= quiztitle %></h1>
 </div>
 <br/>
+
 <div class = "quizquestion">
-<h2> Placeholder Question </h2>
+    <h1 id="score"></h1>
+    <% quiz.forEach(function(question, i) { %>
+      <div id="question<%= i %>">
+      <% if ( i > 0) { %>
+        <script>
+        $('#question<%= i%>').hide()
+       </script>
+     <% }%>
+        <form>
+        <h3><%= question.Question %></h3>
+        <div class="btn-group" data-toggle="buttons">
+          <ul class="list-unstyled">
+        <% question.Answers.forEach(function(Answer, i) { %>
+          <li>
+          <div>
+            <label class="btn btn-primary">
+              <input type="radio" name="options" id="question-<%= question.QuestionID %>-answers-<%= Answer.AnswerID %>" value="<%= Answer.state %>" />
+              <%= Answer.answer %></label>
+          </div>
+        </li>
+        <% }); %>
+      </ul>
+        </div>
+      </form>
+      <% if ( i > 0) { %>
+      <div name="backwards" class="btn btn-primary" onclick="$('#question<%= i-1 %>').show();$('#question<%= i %>').hide();">Backwards</div>
+      <% }; %>
+      <% if ( i < quiz.length - 1 ) { %>
+      <div name="forwards" class="btn btn-primary" onclick="$('#question<%= i+1 %>').show();$('#question<%= i %>').hide();">Forwards</div>
+      <% } else { %>
+      <div name="submit" class="btn btn-primary" onclick="submit('#question<%= i %>',<%= quiz.length %>,<%= quizid %>)">Submit</div>
+      <% }; %>
+    </div>
+    <% }); %>
+
 </div>
 
-<div class = "quizanswers">
-<form>
-  <input type="radio" name="answer" value="ans1" checked> <div class = "ans1"> placeholder </div> <br/>
-  <input type="radio" name="answer" value="ans2"> <div class = "ans2"> placeholder </div> <br/>
-  <input type="radio" name="answer" value="ans3"> <div class = "ans3"> placeholder </div> <br/>
-  <input type="radio" name="answer" value="ans4"> <div class = "ans4"> placeholder </div> <br/>
-</form>
-</div>
 
 </body>
 </html>

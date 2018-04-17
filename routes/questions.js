@@ -11,7 +11,14 @@ router.get('/:id', function(req, res) {
     res.send('Questions ID entered is '+ req.params.id);
 });
 router.get('/:id/answers', function(req, res) {
-    res.send('Questions ID entered is '+ req.params.id + ' and their answer are');
+  //Callback from the query
+  function results(results)
+  {
+    res.send(results);
+  }
+  //First bit is the query and the second is the callback needed to recive the results
+  var query = 'SELECT * from questionanswer where QuestionID = ' + req.params.id;
+  db.query(query,results);
 });
 router.post('/import', function(req, res)
 {

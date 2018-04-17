@@ -3,13 +3,13 @@
 <head>
   <meta charset="utf-8">
   <title> Caley Quizzes</title>
-  <link rel="stylesheet" href="quizselectstyle.css">
+  <link rel="stylesheet" href="../CSS/quizselectstyle.css">
 </head>
 <body>
 
 <div class = "homelogo">
-<img src="./images/quizlogo.png" alt="Caley Quizzes">
-</div> 
+<img src="../images/quizlogo.png" alt="Caley Quizzes">
+</div>
 
 <div class = "profilelink">
 <ul>
@@ -29,10 +29,13 @@
 
 <div class="quizselect">
 <table class = "quizselecttable">
-    <tr> <td> <a href="quiz.html"> <img src="./images/placeholder.png" alt="PLACEHOLDER"></a> </td> <td> <a href="quiz.html"> <img src="./images/placeholder.png" alt="PLACEHOLDER"></a> </td> <td> <a href="quiz.html"> <img src="./images/placeholder.png" alt="PLACEHOLDER"></a> </td> <td> <a href="quiz.html"> <img src="./images/placeholder.png" alt="PLACEHOLDER"></a> </td> </tr>
-	<tr> <td> Quiz Name </td> <td> Quiz Name </td> <td> Quiz Name </td> <td> Quiz Name </td> </tr>
-	<tr> <td> <a href="quiz.html"> <img src="./images/placeholder.png" alt="PLACEHOLDER"></a> </td> <td> <a href="quiz.html"> <img src="./images/placeholder.png" alt="PLACEHOLDER"></a> </td> <td> <a href="quiz.html"> <img src="./images/placeholder.png" alt="PLACEHOLDER"></a> </td> <td> <a href="quiz.html"> <img src="./images/placeholder.png" alt="PLACEHOLDER"></a> </td> </tr>
-	<tr> <td> Quiz Name </td> <td> Quiz Name </td> <td> Quiz Name </td> <td> Quiz Name </td> </tr>
+<% if (quizes.length == 0){%>
+    <p> No Quizes Found Please Add one!!</p>
+<% } %>
+  <% quizes.forEach(function(quizes) { %>
+    <tr> <td> <a href="/quiz/<%= quizes.QuizID %>/1"> <img src="./images/placeholder.png" alt="PLACEHOLDER"></a> </td> </tr>
+    <tr><td><%= quizes.QuizName %></tr>
+    <% }); %>
 </table>
 </div>
 
